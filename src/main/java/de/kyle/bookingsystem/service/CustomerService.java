@@ -19,20 +19,11 @@ public class CustomerService {
 
     public Customer saveCustomer(Customer customer) {
         final Customer byForenameAndSurname = this.customerRepository.findCustomerByForenameAndSurname(customer.getForename(), customer.getSurname());
-        if (byForenameAndSurname != null){
+        if (byForenameAndSurname != null) {
             return byForenameAndSurname;
         }
         this.customerRepository.save(customer);
         return customer;
-    }
-
-    public boolean deleteCustomerById(long id) {
-        final Customer customer = this.customerRepository.findCustomerById(id);
-        if (customer == null) {
-            return false;
-        }
-        this.customerRepository.delete(customer);
-        return true;
     }
 
     public Customer getCustomerByForenameAndSurname(String forename, String surname) {

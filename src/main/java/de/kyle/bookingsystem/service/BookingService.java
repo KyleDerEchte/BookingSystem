@@ -63,4 +63,8 @@ public class BookingService {
     public List<Booking> getBookingsForDate(LocalDateTime date) {
         return this.bookingRepository.findBookingsByDateIsBetween(date.minusHours(date.getHour()), date.plusHours(24 - date.getHour()));
     }
+
+    public boolean hasBookings(Customer customer) {
+        return !this.bookingRepository.findBookingsByCustomer(customer).isEmpty();
+    }
 }

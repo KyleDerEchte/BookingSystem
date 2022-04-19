@@ -24,14 +24,6 @@ public class CustomerController {
         return new ResponseEntity<>(this.customerService.saveCustomer(customer), HttpStatus.ACCEPTED);
     }
 
-    @DeleteMapping
-    public ResponseEntity<Boolean> deleteCustomerById(@RequestParam(name = "id") long id) {
-        final boolean wasDeleted = this.customerService.deleteCustomerById(id);
-        if (wasDeleted) {
-            return new ResponseEntity<>(true, HttpStatus.OK);
-        }
-        return new ResponseEntity<>(false, HttpStatus.NO_CONTENT);
-    }
 
     @GetMapping("/{id}")
     public ResponseEntity<Customer> getCustomerById(@PathVariable(name = "id") long id) {
